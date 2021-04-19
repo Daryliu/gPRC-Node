@@ -3,7 +3,7 @@ var grpc = require('grpc');
 var protoLoader = require("@grpc/proto-loader");
 
 // var PROTO_PATH = __dirname + '/protos/Helloworld.proto';
-var PROTO_PATH = path.resolve(__dirname,'protos/Helloworld.proto');
+var PROTO_PATH = path.resolve(__dirname,'protos/Helloworld.proto');//根据proto文件实际所在位置设置路径
 
 var packageDefinition = protoLoader.loadSync(
     PROTO_PATH,
@@ -41,15 +41,16 @@ function sayHello(call,callback) {       // sayHello的实现，调用call.reque
 
 function printUniversity(call,callback) {
     try {
-        callback(null,{ message: "University is" + call.request.university });
+        let cug = "University is" + call.request.university;
+        callback(null,{ message: cug });
     }catch(err) {
         console.log("Error");
     }
 }
 
 function main() {
-    var server = new grpc.Server();
-    server.addService(hello_proto.Greeter.service,{    
+    var server = new grpc.Server();     //服务器具有一个由Greeter.service描述符对象生成的Server构造函数。
+    server.addService(hello_proto.Greeter.service,{    //这一步实现与proto文件中的服务方法一一映射,并在本文件中一一实现对应的方法
         sayHello:sayHello,
         printUniversity:printUniversity    
     });

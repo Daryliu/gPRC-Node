@@ -1,14 +1,15 @@
 syntax = "proto3";
 
 option java_package = "ztyq.grpc.examples.helloworld";      //表明生成java类所在的包,若没有声明则采用默认的包名
-option objc_class_prefix = "HLW";               //设置object-c类的前缀,添加到所有object-c。
+option objc_class_prefix = "HLW";               //设置object-c类生成文件的前缀,添加到所有object-c；
 
-package helloworld;
+package helloworld; // 包名是生成代码的使用的namespace，所有代码都在这个下面
 
 
 service Greeter {
-    rpc sayHello (HelloRequest) returns (HelloReply) {}
-    
+    //测试接口1
+    rpc sayHello (HelloRequest) returns (HelloReply) {} //接口中，必须有参数和返回值，如果不需要参数或者返回值，也必须定义一个空的（没有成员）message，否则无法通过编译。
+    //测试接口2
     rpc printUniversity (printUniversityRequest) returns (printUniversityReply) {}
 }
 
