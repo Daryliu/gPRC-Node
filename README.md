@@ -14,3 +14,6 @@ gRPC的理念：
 4、编写客户端代码
     1、client.js代码
 5、测试
+
+代理配置并运行localhost:5005测试
+grpcwebproxy --allow_all_origins --backend_addr=localhost:50051 --run_tls_server=false --server_http_debug_port=5005
