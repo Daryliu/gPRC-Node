@@ -2,6 +2,8 @@ syntax = "proto3";
 
 option java_package = "ztyq.grpc.examples.helloworld";      //表明生成java类所在的包,若没有声明则采用默认的包名
 option objc_class_prefix = "HLW";               //设置object-c类生成文件的前缀,添加到所有object-c；
+// java_outer_classname (file option): 该选项表明想要生成Java类的名称
+//java_package (file option): 这个选项表明生成java类所在的包
 
 package helloworld; // 包名是生成代码的使用的namespace，所有代码都在这个下面
 
